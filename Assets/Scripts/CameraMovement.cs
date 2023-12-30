@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {   
+    public GameObject player;
+
     public float sensX;
     public float sensY;
 
@@ -34,5 +36,7 @@ public class CameraMovement : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
+        // update translation to player
+        transform.position = player.transform.position;
     }
 }
