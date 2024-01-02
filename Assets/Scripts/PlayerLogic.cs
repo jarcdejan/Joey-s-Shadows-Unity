@@ -16,6 +16,9 @@ public class PlayerLogic : MonoBehaviour
     public int batteryCount = 0;
     public int pillCount = 0;
 
+    private GameObject holdingObj;
+    List<GameObject> inventory = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,13 +33,25 @@ public class PlayerLogic : MonoBehaviour
 
     void handleObjectPickup(GameObject obj, ObjData objData)
     {
-        obj.SetActive(false);
         Debug.Log(objData.objType);
         if(objData.objType is ObjTypes.battery){
             batteryCount += 1;
+            obj.SetActive(false);
         }
         else if(objData.objType is ObjTypes.pills){
             pillCount += 1;
+            obj.SetActive(false);
+        }
+        else if(objData.objType is ObjTypes.paper){
+            obj.transform.parent = cameraObj.transform;
+            obj.transform.localPosition = new Vector3(0, 0, 0.8f);
+            Quaternion rot = new Quaternion();
+            rot.eulerAngles = new Vector3(-30, 180, 5);
+            obj.transform.localRotation = rot;
+
+            holdingObj = obj;
+            holdingObj.GetComponent<ObjData>().interactable = false;
+            lightObj.GetComponent<LightRotation>().raiseLight = true;
         }
     }
 
@@ -60,7 +75,7 @@ public class PlayerLogic : MonoBehaviour
             GameObject obj = hit.transform.gameObject;
 
             ObjData objData = obj.GetComponent<ObjData>();
-            if(objData is not null) {
+            if(objData is not null && objData.interactable) {
                 if(Input.GetButtonDown("Fire1")){
                     handleObjectPickup(obj, objData);
                 }
@@ -77,5 +92,15 @@ public class PlayerLogic : MonoBehaviour
             //set normal crosshair to active
             setCrosshairAlt(false);
         }
+
+
+        //drop object
+        if(holdingObj is not null && Input.GetButtonDown("Fire2")){
+            holdingObj.SetActive(false);
+            inventory.Add(holdingObj);
+            holdingObj = null;
+            lightObj.GetComponent<LightRotation>().raiseLight = false;
+        }
     }
+
 }

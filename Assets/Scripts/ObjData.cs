@@ -12,4 +12,5 @@ public enum ObjTypes // your custom enumeration
 public class ObjData : MonoBehaviour
 {
     public ObjTypes objType;
+    public bool interactable;
 }
