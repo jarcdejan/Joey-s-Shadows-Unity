@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4e26ff41f77d7f04ba5fe01339f69250
+guid: 6aa41cb491cd77448b88e06df7a056be
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,26 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Door
-    second: {fileID: 2100000, guid: 701a28429a5ee5c4a9bbf143807eda0c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Handle
-    second: {fileID: 2100000, guid: e6cf872b8e063a548a4ac5ac916115f1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Keyhole
-    second: {fileID: 2100000, guid: e6cf872b8e063a548a4ac5ac916115f1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wall
-    second: {fileID: 2100000, guid: d8dbbc8e5ce81fc40aece1efbe381fd4, type: 2}
+      name: Exit
+    second: {fileID: 2100000, guid: 23817e8195847da4e931a9d9e2c6e632, type: 2}
   materials:
     materialImportMode: 2
-    materialName: 2
+    materialName: 0
     materialSearch: 1
     materialLocation: 1
   animations:
@@ -57,7 +42,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
