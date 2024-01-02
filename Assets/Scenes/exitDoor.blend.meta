@@ -7,11 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Door
+    second: {fileID: 2100000, guid: 701a28429a5ee5c4a9bbf143807eda0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Wall
     second: {fileID: 2100000, guid: d8dbbc8e5ce81fc40aece1efbe381fd4, type: 2}
   materials:
     materialImportMode: 2
-    materialName: 0
+    materialName: 2
     materialSearch: 1
     materialLocation: 1
   animations:
