@@ -24,6 +24,7 @@ public class PlayerLogic : MonoBehaviour
     public float batteryLossRate = 1;
 
     public GameObject itemAudioNode;
+    public GameObject whispersAudioNode;
 
     private GameObject holdingObj;
     private List<GameObject> inventory = new List<GameObject>();
@@ -158,6 +159,13 @@ public class PlayerLogic : MonoBehaviour
                 itemAudioNode.GetComponent<ItemAudioSources>().error.Play(0);
             }
         }
+        //set the whispers volume based on sanity level
+        float cutoffSanity = 70f;
+        float maxVolume = 0.8f;
+        if(sanity < cutoffSanity)
+            whispersAudioNode.GetComponent<AudioSource>().volume = (cutoffSanity - sanity) / cutoffSanity * maxVolume;
+        else
+            whispersAudioNode.GetComponent<AudioSource>().volume = 0;
     }
 
 }
