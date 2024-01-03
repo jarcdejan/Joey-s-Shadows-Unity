@@ -16,8 +16,19 @@ public class PlayerLogic : MonoBehaviour
     public int batteryCount = 0;
     public int pillCount = 0;
 
+    public float maxSanity = 100f;
+    public float sanity = 100f;
+    public float sanityLossRate = 1;
+    public float maxBattery = 100f;
+    public float battery = 100f;
+    public float batteryLossRate = 1;
+
+    public GameObject itemAudioNode;
+
     private GameObject holdingObj;
-    List<GameObject> inventory = new List<GameObject>();
+    private List<GameObject> inventory = new List<GameObject>();
+
+    private bool lightOn = true;
 
     // Start is called before the first frame update
     void Start()
@@ -34,13 +45,16 @@ public class PlayerLogic : MonoBehaviour
     void handleObjectPickup(GameObject obj, ObjData objData)
     {
         Debug.Log(objData.objType);
+
         if(objData.objType is ObjTypes.battery){
             batteryCount += 1;
             obj.SetActive(false);
+            itemAudioNode.GetComponent<ItemAudioSources>().pickUpBattery.Play(0);
         }
         else if(objData.objType is ObjTypes.pills){
             pillCount += 1;
             obj.SetActive(false);
+            itemAudioNode.GetComponent<ItemAudioSources>().pickUpPills.Play(0);
         }
         else if(objData.objType is ObjTypes.paper){
             obj.transform.parent = cameraObj.transform;
@@ -52,20 +66,15 @@ public class PlayerLogic : MonoBehaviour
             holdingObj = obj;
             holdingObj.GetComponent<ObjData>().interactable = false;
             lightObj.GetComponent<LightRotation>().raiseLight = true;
+
+            holdingObj.GetComponent<AudioSource>().Play(0);
         }
     }
+
 
     // Update is called once per frame
     void Update()
     {   
-        //switch flashlight
-        if(Input.GetKeyDown("f")) {
-            Light light = lightObj.GetComponent<Light>();
-            light.enabled = !light.enabled;
-
-            AudioSource audioSource = lightObj.GetComponent<AudioSource>();
-            audioSource.Play(0);
-        }
 
         //raycast for item interaction
         RaycastHit hit;
@@ -94,12 +103,60 @@ public class PlayerLogic : MonoBehaviour
         }
 
 
-        //drop object
+        //put paper away
         if(holdingObj is not null && Input.GetButtonDown("Fire2")){
             holdingObj.SetActive(false);
             inventory.Add(holdingObj);
             holdingObj = null;
             lightObj.GetComponent<LightRotation>().raiseLight = false;
+            itemAudioNode.GetComponent<ItemAudioSources>().paper.Play(0);
+        }
+
+
+        //switch flashlight
+        if(Input.GetKeyDown("f")) {
+            Light light = lightObj.GetComponent<Light>();
+            light.enabled = !light.enabled;
+            lightOn = !lightOn;
+
+            lightObj.GetComponent<LightAudioSources>().switchLight.Play(0);
+
+        }
+        //decrease battery
+        if(lightOn)
+            battery = Mathf.Max(battery - batteryLossRate * Time.deltaTime, 0);
+
+        //set the state of the light
+        if(lightOn && battery > 0)
+            lightObj.GetComponent<Light>().enabled = true;
+        else
+            lightObj.GetComponent<Light>().enabled = false;
+        //refill batteries
+        if(Input.GetKeyDown("1")) {
+            if(batteryCount > 0) {
+                battery = maxBattery;
+                batteryCount -= 1;
+                lightObj.GetComponent<LightAudioSources>().useBattery.Play(0);
+            }
+            else {
+                itemAudioNode.GetComponent<ItemAudioSources>().error.Play(0);
+            }
+        }
+
+
+        //decrease sanity from darkness
+        if(!lightOn || battery <= 0)
+            sanity = Mathf.Max(sanity - sanityLossRate * Time.deltaTime, 0);
+        //refill sanity
+        if(Input.GetKeyDown("2")) {
+            if(pillCount > 0) {
+                itemAudioNode.GetComponent<ItemAudioSources>().usePills.Play(0);
+                sanity = maxSanity;
+                pillCount -= 1;
+            }
+            else {
+                itemAudioNode.GetComponent<ItemAudioSources>().error.Play(0);
+            }
         }
     }
 
