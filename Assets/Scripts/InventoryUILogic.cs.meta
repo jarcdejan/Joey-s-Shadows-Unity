@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 9024ca89ff9ba5942b89063a28bdfacc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inventory: {instanceID: 0}
+  - batteryCount: {instanceID: 0}
+  - pillsCount: {instanceID: 0}
+  - keyCount: {instanceID: 0}
+  - number0: {fileID: 21300000, guid: 16c0a8c5a0173ea4ca7525ec71e65d46, type: 3}
+  - number1: {instanceID: 0}
+  - number2: {instanceID: 0}
+  - number3: {instanceID: 0}
+  - number4: {instanceID: 0}
+  - number5: {instanceID: 0}
+  - number6: {instanceID: 0}
+  - number7: {instanceID: 0}
+  - number8: {instanceID: 0}
+  - number9: {instanceID: 0}
+  - playerObj: {instanceID: 0}
+  - inventoryAudioNode: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

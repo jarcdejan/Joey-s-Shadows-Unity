@@ -4,5 +4,29 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/startScreen.unity
+    guid: e63b507845c4cb4489a15699cc8f5688
+  - enabled: 1
+    path: Assets/Scenes/controlsScene.unity
+    guid: e32b67ec94986b54bb4154f3421910a7
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/endScreen.unity
+    guid: 811d1fac358838447ae583e2968d9e63
+  - enabled: 1
+    path: Assets/Scenes/pauseScreen.unity
+    guid: bcd97cfc50dc6004bab58c92b666ef93
+  - enabled: 1
+    path: Assets/Scenes/settingsScreen.unity
+    guid: ade618af6e7552a40a5e02d585722d83
+  - enabled: 1
+    path: Assets/Scenes/videoScene.unity
+    guid: 41df48f85bc62cc4da34271ec136ed56
+  - enabled: 1
+    path: Assets/Scenes/winSreen.unity
+    guid: 0f0b4718e8f153c42bcae5aa20bd00fe
   m_configObjects: {}
