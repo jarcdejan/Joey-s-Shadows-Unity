@@ -1,0 +1,68 @@
+[
+  {
+    "MountId": "56e62dd7-241f-41e9-8c6b-dd4ca4513e62",
+    "AncestorCsetIds": [
+      132
+    ],
+    "SourceCsetId": 135,
+    "DestinationCsetId": 132,
+    "FileConflicts": [
+      {
+        "Path": "/Assets/Scripts/pauseGame.cs",
+        "ItemId": 3660,
+        "ParentItemId": 1000,
+        "BaseRevId": 4962,
+        "SourceRevId": 4999,
+        "DestinationRevId": 4962
+      },
+      {
+        "Path": "/Assets/Scripts/SceneSwitcher.cs",
+        "ItemId": 3662,
+        "ParentItemId": 1000,
+        "BaseRevId": 4460,
+        "SourceRevId": 5002,
+        "DestinationRevId": 4460
+      },
+      {
+        "Path": "/Assets/Scripts/settingsMenu.cs",
+        "ItemId": 3664,
+        "ParentItemId": 1000,
+        "BaseRevId": 4948,
+        "SourceRevId": 5003,
+        "DestinationRevId": 4948
+      },
+      {
+        "Path": "/Assets/Scripts/FadeOutScreenAndMusic.cs",
+        "ItemId": 4379,
+        "ParentItemId": 1000,
+        "BaseRevId": 4968,
+        "SourceRevId": 4998,
+        "DestinationRevId": 4968
+      },
+      {
+        "Path": "/Assets/Scripts/fadeInScreen.cs",
+        "ItemId": 3654,
+        "ParentItemId": 1000,
+        "BaseRevId": 4984,
+        "SourceRevId": 5016,
+        "DestinationRevId": 4984
+      },
+      {
+        "Path": "/Assets/Scenes/startScreen.unity",
+        "ItemId": 3646,
+        "ParentItemId": 997,
+        "BaseRevId": 4788,
+        "SourceRevId": 5023,
+        "DestinationRevId": 4788
+      },
+      {
+        "Path": "/Assets/Scenes/videoScene.unity",
+        "ItemId": 3648,
+        "ParentItemId": 997,
+        "BaseRevId": 4959,
+        "SourceRevId": 4996,
+        "DestinationRevId": 4959
+      }
+    ]
+  }
+]
